@@ -31,10 +31,12 @@ def serve_file(path):
 def home_page():
   out_dict={}
   out_dict["message"]="success"
-  return json.dumps(out_dict)
+  #return json.dumps(out_dict)
 
   #index_file_dom=DOM(read_file("index.html"))
   #home_repl_dict={".page":""}
+
+  return read_file("index.html") #json.dumps(out_dict)
 
 
 if __name__ == '__main__':
