@@ -14,7 +14,7 @@ from code_utils.web_lib import *
 from code_utils.backend_utils import *
 from code_utils.pandas_utils import *
 from code_utils.align_utils import *
-from code_utils.arabic_utils import *
+from code_utils.arabic_lib import *
 from code_utils.classification_utils import *
 
 
