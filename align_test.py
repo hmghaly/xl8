@@ -29,7 +29,7 @@ src0="[RO] We demand that the parties to the conflict uphold their obligations u
 trg0="[RO] نطالب أطراف النزاع بالوفاء بالتزاماتها بموجب القانون الدولي الإنساني، بما في ذلك الحرص الدائم على تجنيب المدنيين والعاملين في المجال الإنساني والأهداف المدنية الأذى، وأن تتيح الوصول الآمن ودون عوائق للمساعدات الإنسانية لجميع المحتاجين."
 
 src_tokens0=tok(src0)
-trg_tokens0=cur_ar_tok_fn(trg0)
+trg_tokens0=tok(trg0) #cur_ar_tok_fn(trg0)
 
 align_out=bert_walign(src_tokens0,trg_tokens0,bert_tokenizer,bert_model)
 #print(align_out)
