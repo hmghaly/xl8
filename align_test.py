@@ -2,10 +2,21 @@ from code_utils.general import *
 from code_utils.parsing_lib import *
 from code_utils.align_utils import *
 from code_utils.dep_lib import *
+from code_utils.arabic_lib import *
+
 #!pip install transformers==3.1.0
 import torch
 import transformers
 import itertools
+
+from itertools import groupby
+from collections import Counter
+ar_counter_dict=load_counts("data/ar_count.txt", tmp_count_dict={})
+
+def cur_ar_tok_fn(text):
+  cur_toks=tok(text)
+  return tok_ar(cur_toks,ar_counter_dict)
+
 
 bert_model = transformers.BertModel.from_pretrained('bert-base-multilingual-cased')
 bert_tokenizer = transformers.BertTokenizer.from_pretrained('bert-base-multilingual-cased')
@@ -18,7 +29,7 @@ src0="[RO] We demand that the parties to the conflict uphold their obligations u
 trg0="[RO] نطالب أطراف النزاع بالوفاء بالتزاماتها بموجب القانون الدولي الإنساني، بما في ذلك الحرص الدائم على تجنيب المدنيين والعاملين في المجال الإنساني والأهداف المدنية الأذى، وأن تتيح الوصول الآمن ودون عوائق للمساعدات الإنسانية لجميع المحتاجين."
 
 src_tokens0=tok(src0)
-trg_tokens0=tok(trg0)
+trg_tokens0=cur_ar_tok_fn(trg0)
 
 align_out=bert_walign(src_tokens0,trg_tokens0,bert_tokenizer,bert_model)
 #print(align_out)
