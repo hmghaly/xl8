@@ -89,9 +89,34 @@
                 <label for="bitext_input" class="block mb-2 text-xl font-medium text-gray-900 dark:text-white text-center">Bitext Content</label>
                     <textarea id="bitext_input" name="bitext_input" rows="10" class="lang_input_form block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Paste bitext content here"></textarea>
 
+                        
+
+
             </div>
             <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="web_page_input_div" role="tabpanel" aria-labelledby="web_page_input_div-tab">
                 <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Analyze pair of web pages</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+
+                <!-- Web Page Input -->
+                    <div class="gap-8 columns-2 mb-4">
+                        <div class="mx-2">
+                          <label for="src_web_page" class="block mb-2 text-xl font-medium text-gray-900 dark:text-white text-center">Source Web Page</label>
+                          <input type="text" id="src_web_page" name="src_web_page" class="lang_input_form block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-2" disabled>
+                          
+
+
+                        </div>
+                        <div class="mx-2">
+
+                          <label for="trg_web_page" class="block mb-2 text-xl font-medium text-gray-900 dark:text-white text-center">Target Web Page</label>
+                          <input type="text" id="trg_web_page" name="trg_web_page" class="lang_input_form block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-2" disabled>
+
+
+                        </div>
+                    </div>
+                    <!-- End of Web Page Input -->                
+
+
+
             </div>
             <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="file_input_div" role="tabpanel" aria-labelledby="file_input_div-tab">
                 <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Analyze File pair</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
@@ -122,8 +147,6 @@
               <select id="trg_lang" name="trg_lang" class="lang_input_form block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-2" disabled>
                 <option value="ar">Arabic</option>
               </select>
-
-
 
 
             </div>
