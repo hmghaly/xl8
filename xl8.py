@@ -39,6 +39,14 @@ def home_page():
   return read_file("index.html") #json.dumps(out_dict)
 
 
+@app.route('/align_api')
+def align_api():
+  out_dict={}
+  out_dict["message"]="success"
+  return json.dumps(out_dict)
+
+
+
 if __name__ == '__main__':
   from waitress import serve
   print("serving app")
