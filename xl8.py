@@ -43,7 +43,34 @@ def home_page():
 def align_api():
   out_dict={}
   out_dict["message"]="success"
+  if request.method == 'POST':
+      posted_data=request.data.decode("utf-8")
+      posted_data_dict=json.loads(posted_data)   
+      out_dict["data"]=posted_data_dict
   return json.dumps(out_dict)
+
+
+#Sentence Alignment Code
+def trg_tokenize(txt):
+  txt=clean_ar(txt)
+  return general.tok_uc(txt)
+
+align_params0={}
+align_params0["default_len_ratio"]=0.85
+align_params0["src_tok_function"]=general.tok_uc
+align_params0["trg_tok_function"]=trg_tokenize
+
+
+def content_align(src_content,trg_content,align_params=align_params0):
+  src_sents=ssplit(src_content)
+  trg_sents=ssplit(trg_content)
+  s_align=sent_align(source, target,align_params)
+  out_dict={"src":src_sents,"trg":trg_sents,"alignment":s_align.aligned_pairs}
+  return out_dict
+
+
+
+
 
 
 
