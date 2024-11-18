@@ -27,6 +27,23 @@ def serve_file(path):
     return send_from_directory('assets', path)  
 
 
+@app.errorhandler(Exception)
+def exception_handler(error):
+  out={}
+  #out["repr"]=repr(error)
+  #out["test"]=dir(error)
+  try: out["error_code"]=error.code #dir(error)
+  except: pass
+  #out["error_description"]=error.description
+  
+  ex=Exception
+  out["error_string"]=str(ex)
+  out["trace"]=traceback.format_exc()
+  append_line(json.dumps(out),error_fpath)
+  
+  return json.dumps(out)
+
+
 @app.route('/')
 def home_page():
   out_dict={}
