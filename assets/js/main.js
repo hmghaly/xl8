@@ -16,15 +16,19 @@ async function submit_analyze(){
   for (it0 of aligned_pairs){
     console.log(it0)
     var row = cur_table.insertRow(-1);
-    row.className="odd:bg-white even:bg-emerald-100"
+    row.className="odd:bg-white even:bg-sky-50"
 
     // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
 
     // Add some text to the new cells:
-    cell1.innerHTML = "NEW CELL1";
-    cell2.innerHTML = "NEW CELL2";
+    cur_src=it0["src"] || {}
+    cur_trg=it0["trg"] || {}
+    src_ids=cur_src["ids"] || []
+    trg_ids=cur_trg["ids"] || []
+    cell1.innerHTML = cur_src["text"] || "" //"NEW CELL1";
+    cell2.innerHTML = cur_trg["text"] || " " //"NEW CELL2";
 
   }
 
