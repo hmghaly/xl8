@@ -27,8 +27,14 @@ async function submit_analyze(){
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     
-    if (src_lang=="ar") cell1.style.textAlign = "right";
-    if (trg_lang=="ar") cell2.style.textAlign = "right";
+    if (src_lang=="ar") {
+      cell1.style.textAlign = "right";
+      cell1.dir = 'rtl'
+    } 
+    if (trg_lang=="ar") {
+      cell2.style.textAlign = "right";
+      cell2.dir = 'rtl'
+    } 
 
 
     // Add some text to the new cells:
