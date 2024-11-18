@@ -13,6 +13,11 @@ async function submit_analyze(){
   cur_table=$$("bitext_table")
   align_output=res["align_output"] || {}
   aligned_pairs=align_output["alignment"] || []
+
+  res_input_data=res["data"] || {}
+  src_lang=res_input_data["src_lang"] || "en"
+  trg_lang=res_input_data["trg_lang"] || "ar"
+
   for (it0 of aligned_pairs){
     console.log(it0)
     var row = cur_table.insertRow(-1);
@@ -21,6 +26,10 @@ async function submit_analyze(){
     // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
+    
+    if (src_lang=="ar") cell1.style.textAlign = "right";
+    if (trg_lang=="ar") cell2.style.textAlign = "right";
+
 
     // Add some text to the new cells:
     cur_src=it0["src"] || {}
