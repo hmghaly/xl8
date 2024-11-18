@@ -16,7 +16,7 @@ async function submit_analyze(){
   for (it0 of aligned_pairs){
     console.log(it0)
     var row = cur_table.insertRow(-1);
-    row.className="odd:bg-white even:bg-gray-50"
+    row.className="odd:bg-white even:bg-emerald-100"
 
     // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
     var cell1 = row.insertCell(0);
