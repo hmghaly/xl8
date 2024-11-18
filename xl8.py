@@ -66,7 +66,12 @@ def align_api():
       out_dict["data"]=posted_data_dict
       src_text_input=posted_data_dict.get("src_text_input","")
       trg_text_input=posted_data_dict.get("trg_text_input","")
-      if src_text_input and trg_text_input: out_dict["align_output"]=content_align(src_text_input,trg_text_input)
+      try:
+        if src_text_input and trg_text_input: out_dict["align_output"]=content_align(src_text_input,trg_text_input)
+      except Exception as ex:
+        out_dict["error_string"]=str(ex)
+        out_dict["trace"]=traceback.format_exc()
+  
 
   return json.dumps(out_dict)
 
