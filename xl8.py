@@ -47,6 +47,10 @@ def align_api():
       posted_data=request.data.decode("utf-8")
       posted_data_dict=json.loads(posted_data)   
       out_dict["data"]=posted_data_dict
+      src_text_input=posted_data_dict.get("src_text_input","")
+      trg_text_input=posted_data_dict.get("trg_text_input","")
+      if src_text_input and trg_text_input: out_dict["align_output"]=content_align(src_text_input,trg_text_input)
+
   return json.dumps(out_dict)
 
 
