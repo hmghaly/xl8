@@ -39,6 +39,9 @@ async function submit_analyze(){
     cell1.innerHTML = cur_src["text"] || "" //"NEW CELL1";
     cell2.innerHTML = cur_trg["text"] || " " //"NEW CELL2";
 
+    cell1.className="p-2"
+    cell2.className="p-2"
+
   }
 
 }
