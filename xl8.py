@@ -39,7 +39,7 @@ def home_page():
   return read_file("index.html") #json.dumps(out_dict)
 
 
-@app.route('/align_api')
+@app.route('/align_api', methods = ['POST',"GET"])
 def align_api():
   out_dict={}
   out_dict["message"]="success"
