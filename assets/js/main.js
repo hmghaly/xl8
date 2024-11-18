@@ -11,6 +11,7 @@ async function submit_analyze(){
   $$("input_div").hidden=true;
   //populate table
   cur_table=$$("bitext_table")
+  cur_table.innerHTML=""
   align_output=res["align_output"] || {}
   aligned_pairs=align_output["alignment"] || []
 
