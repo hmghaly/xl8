@@ -90,7 +90,7 @@ align_params0["trg_tok_function"]=trg_tokenize
 def content_align(src_content,trg_content,align_params=align_params0):
   src_sents=ssplit(src_content)
   trg_sents=ssplit(trg_content)
-  s_align=sent_align(source, target,align_params)
+  s_align=sent_align(src_sents, trg_sents,align_params)
   out_dict={"src":src_sents,"trg":trg_sents,"alignment":s_align.aligned_pairs}
   return out_dict
 
