@@ -98,9 +98,9 @@ def content_align(src_content,trg_content,align_params=align_params0):
 
 
 def bitext_process(bitext_str_input):
-  aligned_pairs=split_bitext_str(bitext_str_input,exclude_single=True)
+  bitext_pairs=split_bitext_str(bitext_str_input,exclude_single=True)
   src_sents,trg_sents,aligned_pairs=[],[],[]
-  for i0, a0 in enumerate(aligned_pairs):
+  for i0, a0 in enumerate(bitext_pairs):
     src_seg0,trg_seg0=a0
     idx_pair=([i0],[i0])
     src_sents.append(src_seg0)
