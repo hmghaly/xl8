@@ -32,8 +32,8 @@ def exception_handler(error):
   out={}
   #out["repr"]=repr(error)
   #out["test"]=dir(error)
-  try: out["error_code"]=error.code #dir(error)
-  except: pass
+  # try: out["error_code"]=error.code #dir(error)
+  # except: pass
   #out["error_description"]=error.description
   
   ex=Exception
