@@ -105,7 +105,10 @@ def bitext_process(bitext_str_input):
     idx_pair=([i0],[i0])
     src_sents.append(src_seg0)
     trg_sents.append(trg_seg0)
-    aligned_pairs.append(idx_pair)
+    cur_dict={}
+    cur_dict["src"]={"text":src_seg0,"ids":[i0]}
+    cur_dict["trg"]={"text":trg_seg0,"ids":[i0]}
+    aligned_pairs.append(cur_dict)
   out_dict={"src":src_sents,"trg":trg_sents,"alignment":aligned_pairs}
   return out_dict
 
