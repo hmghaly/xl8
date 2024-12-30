@@ -66,8 +66,10 @@ def align_api():
       out_dict["data"]=posted_data_dict
       src_text_input=posted_data_dict.get("src_text_input","")
       trg_text_input=posted_data_dict.get("trg_text_input","")
+      bitext_input==posted_data_dict.get("bitext_input","")
       try:
         if src_text_input and trg_text_input: out_dict["align_output"]=content_align(src_text_input,trg_text_input)
+        elif bitext_input: out_dict["align_output"]=bitext_process(bitext_input)
       except Exception as ex:
         out_dict["error_string"]=str(ex)
         out_dict["trace"]=traceback.format_exc()
@@ -95,7 +97,17 @@ def content_align(src_content,trg_content,align_params=align_params0):
   return out_dict
 
 
-
+def bitext_process(bitext_str_input):
+  aligned_pairs=split_bitext_str(bitext_str_input,exclude_single=True)
+  src_sents,trg_sents,aligned_pairs=[],[],[]
+  for i0, a0 in enumerate(aligned_pairs):
+    src_seg0,trg_seg0=a0
+    idx_pair=([i0],[i0])
+    src_sents.append(src_seg0)
+    trg_sents.append(trg_seg0)
+    aligned_pairs.append(idx_pair)
+  out_dict={"src":src_sents,"trg":trg_sents,"alignment":aligned_pairs}
+  return out_dict
 
 
 
