@@ -32,8 +32,8 @@ def exception_handler(error):
   out={}
   #out["repr"]=repr(error)
   #out["test"]=dir(error)
-  # try: out["error_code"]=error.code #dir(error)
-  # except: pass
+  try: out["error_code"]=error.code #dir(error)
+  except: pass
   #out["error_description"]=error.description
   
   ex=Exception
@@ -66,7 +66,7 @@ def align_api():
       out_dict["data"]=posted_data_dict
       src_text_input=posted_data_dict.get("src_text_input","")
       trg_text_input=posted_data_dict.get("trg_text_input","")
-      bitext_input==posted_data_dict.get("bitext_input","")
+      bitext_input=posted_data_dict.get("bitext_input","")
       try:
         if src_text_input and trg_text_input: out_dict["align_output"]=content_align(src_text_input,trg_text_input)
         elif bitext_input: out_dict["align_output"]=bitext_process(bitext_input)
