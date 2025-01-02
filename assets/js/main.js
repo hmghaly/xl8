@@ -111,6 +111,7 @@ function export_output(){
   for (it0 of trg_segs) trg_segs_content_items.push(it0.innerHTML)
   trg_segs_content=trg_segs_content_items.join(" ")
   console.log(trg_segs_content)
+  modal_export_output.innerHTML=trg_segs_content
 }
 
 function exported2clipboard(){
