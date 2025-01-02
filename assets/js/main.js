@@ -99,5 +99,6 @@ function update_trg_seg(obj0){
   corr_table_trg_el_id=modal_trg_seg_el.dataset.trg || ""
   console.log(modal_trg_seg_el)
   console.log(corr_table_trg_el_id)
+  $$(corr_table_trg_el_id).innerHTML=modal_trg_seg_el.innerHTML
 
 }
