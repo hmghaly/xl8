@@ -19,7 +19,10 @@ async function submit_analyze(){
   src_lang=res_input_data["src_lang"] || "en"
   trg_lang=res_input_data["trg_lang"] || "ar"
 
+  counter0=0
+
   for (it0 of aligned_pairs){
+    counter0+=1
     console.log(it0)
     var row = cur_table.insertRow(-1);
     row.className="odd:bg-white even:bg-sky-50"
@@ -42,6 +45,9 @@ async function submit_analyze(){
     cell1.setAttribute("name", "src_cell")
     cell2.setAttribute("name", "trg_cell")
 
+    cell2.setAttribute("id", "trg_"+counter0)
+    cell2.contentEditable=true;
+
 
     // Add some text to the new cells:
     cur_src=it0["src"] || {}
@@ -52,7 +58,7 @@ async function submit_analyze(){
     cell2.innerHTML = cur_trg["text"] || " " //"NEW CELL2";
 
     cell1.className="p-2"
-    cell2.className="p-2"
+    cell2.className="trg_segs p-2"
 
   }
 
@@ -80,6 +86,7 @@ function open_seg_pair(evt){
 
   $$("modal_src_seg").innerHTML=src_cells.innerHTML
   $$("modal_trg_seg").innerHTML=trg_cells.innerHTML
+  $$("modal_trg_seg").dataset.trg=trg_cells.id
 
   //console.log(trg_cell)
 
