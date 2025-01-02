@@ -107,7 +107,9 @@ function update_trg_seg(obj0){
 function export_output(){
   $$("export_modal_btn").click()  
   trg_segs=document.getElementsByClassName("trg_segs")
-  trg_segs_content=trg_segs.map(x => x.innerHTML)
+  trg_segs_content_items=[]
+  for (it0 of trg_segs) trg_segs_content_items.push(it0.innerHTML)
+  trg_segs_content=trg_segs_content_items.join(" ")
   console.log(trg_segs_content)
 }
 
