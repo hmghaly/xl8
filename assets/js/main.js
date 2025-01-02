@@ -95,6 +95,9 @@ function open_seg_pair(evt){
 function update_trg_seg(obj0){
 
   console.log(obj0)
-  console.log($$("modal_trg_seg"))
+  modal_trg_seg_el=$$("modal_trg_seg")
+  corr_table_trg_el_id=modal_trg_seg_el.dataset.trg || ""
+  console.log(modal_trg_seg_el)
+  console.log(corr_table_trg_el_id)
 
 }
