@@ -67,10 +67,11 @@ function back2input(){
 
 function open_seg_pair(evt){
   console.log(evt.target)
-  trg0=evt.target
-  src_cell = trg0.getElementsByName("src_cell");
-  trg_cell = trg0.getElementsByName("trg_cell");
-  console.log(src_cell)
-  console.log(trg_cell)
+  evt_trg0=evt.target
+  //src_cell = trg0.getElementsByName("src_cell");
+  //trg_cell = trg0.getElementsByName("trg_cell");
+  let src_cells = evt_trg0.querySelector("[name='src_cell']");
+  console.log(src_cells)
+  //console.log(trg_cell)
 
 }
