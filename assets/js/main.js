@@ -72,11 +72,13 @@ function open_seg_pair(evt){
   //trg_cell = trg0.getElementsByName("trg_cell");
   let src_cells = evt_trg0.querySelector("[name='src_cell']");
   let trg_cells = evt_trg0.querySelector("[name='trg_cell']");
-  console.log(src_cells)
-  console.log(trg_cells)
+  console.log(src_cells.innerHTML)
+  console.log(trg_cells.innerHTML)
   //jQuery.noConflict(); 
   //$('#seg_pair_modal').modal('show');
   $$("seg_pair_modal_btn").click()
+
+  modal_src_seg
 
   //console.log(trg_cell)
 
