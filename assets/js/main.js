@@ -75,7 +75,8 @@ function open_seg_pair(evt){
   console.log(src_cells)
   console.log(trg_cells)
   //jQuery.noConflict(); 
-  $('#seg_pair_modal').modal('show');
+  //$('#seg_pair_modal').modal('show');
+  $$("seg_pair_modal_btn").click()
 
   //console.log(trg_cell)
 
