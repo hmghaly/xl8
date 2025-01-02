@@ -78,7 +78,8 @@ function open_seg_pair(evt){
   //$('#seg_pair_modal').modal('show');
   $$("seg_pair_modal_btn").click()
 
-  modal_src_seg
+  $$("modal_src_seg").innerHTML=src_cells.innerHTML
+  $$("modal_trg_seg").innerHTML=trg_cells.innerHTML
 
   //console.log(trg_cell)
 
