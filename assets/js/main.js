@@ -91,3 +91,8 @@ function open_seg_pair(evt){
   //console.log(trg_cell)
 
 }
+
+function update_trg_seg(obj0){
+  console.log(obj0)
+
+}
