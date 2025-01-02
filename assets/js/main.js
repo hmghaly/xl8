@@ -71,7 +71,9 @@ function open_seg_pair(evt){
   //src_cell = trg0.getElementsByName("src_cell");
   //trg_cell = trg0.getElementsByName("trg_cell");
   let src_cells = evt_trg0.querySelector("[name='src_cell']");
+  let trg_cells = evt_trg0.querySelector("[name='trg_cell']");
   console.log(src_cells)
+  console.log(trg_cells)
   //console.log(trg_cell)
 
 }
