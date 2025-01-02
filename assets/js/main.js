@@ -74,6 +74,8 @@ function open_seg_pair(evt){
   let trg_cells = evt_trg0.querySelector("[name='trg_cell']");
   console.log(src_cells)
   console.log(trg_cells)
+  $('#seg_pair_modal').modal('show');
+  
   //console.log(trg_cell)
 
 }
