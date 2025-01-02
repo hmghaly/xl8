@@ -24,6 +24,8 @@ async function submit_analyze(){
     var row = cur_table.insertRow(-1);
     row.className="odd:bg-white even:bg-sky-50"
 
+    row.onclick=open_seg_pair
+
     // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
@@ -36,6 +38,9 @@ async function submit_analyze(){
       cell2.style.textAlign = "right";
       cell2.dir = 'rtl'
     } 
+
+    cell1.setAttribute("name", "src_cell")
+    cell2.setAttribute("name", "trg_cell")
 
 
     // Add some text to the new cells:
@@ -57,5 +62,15 @@ async function submit_analyze(){
 function back2input(){
   $$("output_div").hidden=true;
   $$("input_div").hidden=false;
+
+}
+
+function open_seg_pair(evt){
+  console.log(evt.target)
+  trg0=evt.target
+  src_cell = trg0.getElementsByName("src_cell");
+  trg_cell = trg0.getElementsByName("trg_cell");
+  console.log(src_cell)
+  console.log(trg_cell)
 
 }
