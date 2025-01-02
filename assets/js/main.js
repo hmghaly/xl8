@@ -102,3 +102,8 @@ function update_trg_seg(obj0){
   $$(corr_table_trg_el_id).innerHTML=modal_trg_seg_el.innerHTML
 
 }
+
+
+function export_output(){
+  $$("export_modal_btn").click()  
+}
