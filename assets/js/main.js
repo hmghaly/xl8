@@ -106,4 +106,11 @@ function update_trg_seg(obj0){
 
 function export_output(){
   $$("export_modal_btn").click()  
+  trg_segs=document.getElementsByClassName("trg_segs")
+  trg_segs_content=trg_segs.map(x => x.innerHTML)
+  console.log(trg_segs_content)
+}
+
+function exported2clipboard(){
+
 }
