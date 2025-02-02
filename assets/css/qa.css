@@ -3,6 +3,15 @@
 }
 
 
+.matched {
+	background-color: lightgreen;
+}
+
+.qa_warning {
+	background-color: lightyellow;
+}
+
+
 /* Tooltip container */
 .tooltip {
   position: relative;
