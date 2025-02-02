@@ -15,12 +15,42 @@ from code_utils.backend_utils import *
 from code_utils.pandas_utils import *
 from code_utils.align_utils import *
 from code_utils.arabic_lib import *
+from code_utils.qa_utils import *
+
 from code_utils.classification_utils import *
 
 
 app = Flask(__name__)
 
 #app.wsgi_app = ProxyFix(app.wsgi_app)
+
+
+
+normative_wb_path="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpf4wpYxSkFFC84xMNFFVM_LKWtQo8wIchL8sksiNSQLZktwPTnLW9jmF2jVpv4gORd9gD9QtcrTGZ/pub?output=xlsx"
+normative_wb=get_wb_data_dict(normative_wb_path)
+
+ar_warning_items=normative_wb["arabic_warnings"]
+ar_warning_list=[]
+for it0 in ar_warning_items:
+  word0,note0=it0["word"],it0["note"]
+  ar_warning_list.append((note0,word0))
+
+normative_items=normative_wb["normative"]
+normative_list=[]
+for it0 in normative_items:
+  en_item_raw0,ar_item_raw0=it0["en"],it0["ar"]
+  normative_list.append((en_item_raw0,ar_item_raw0))
+
+warning_src_inv_dict0,warning_trg_inv_dict0=qa_list_inv(ar_warning_list)
+normative_src_inv_dict0,normative_trg_inv_dict0=qa_list_inv(normative_list,include_self=True)
+
+qa_param_list=[]
+qa_param_list.append({"src_inv_dict":{},"trg_inv_dict":warning_trg_inv_dict0,"qa_type":"warning"})
+qa_param_list.append({"src_inv_dict":normative_src_inv_dict0,"trg_inv_dict":normative_trg_inv_dict0,"qa_type":"matching"})
+
+
+
+
 
 @app.route('/assets/<path:path>')
 def serve_file(path):
@@ -106,8 +136,16 @@ def bitext_process(bitext_str_input):
     src_sents.append(src_seg0)
     trg_sents.append(trg_seg0)
     cur_dict={}
-    cur_dict["src"]={"text":src_seg0,"ids":[i0]}
-    cur_dict["trg"]={"text":trg_seg0,"ids":[i0]}
+    src_toks0,trg_toks0=tok(src_seg0),tok(trg_seg0)
+    cur_qa_matches=qa_get_matching_list_from_params(qa_param_list,src_toks0,trg_toks0)
+    prefix0=f'sent{i0}'
+    qa_src_text,qa_trg_text=qa_matches2tags(cur_qa_matches,src_toks0,trg_toks0,prefix0)
+    cur_dict["src"]={"text":qa_src_text,"ids":[i0]}
+    cur_dict["trg"]={"text":qa_trg_text,"ids":[i0]}
+
+    # cur_dict["src"]={"text":src_seg0,"ids":[i0]}
+    # cur_dict["trg"]={"text":trg_seg0,"ids":[i0]}
+
     aligned_pairs.append(cur_dict)
   out_dict={"src":src_sents,"trg":trg_sents,"alignment":aligned_pairs}
   return out_dict
