@@ -8,6 +8,22 @@ from itertools import groupby
 import pandas as pd
 
 
+from code_utils.general import *
+from code_utils.web_lib import *
+from code_utils.backend_utils import *
+from code_utils.pandas_utils import *
+from code_utils.align_utils import *
+from code_utils.arabic_lib import *
+from code_utils.qa_utils import *
+from code_utils.classification_utils import *
+from code_utils.ai_utils import *
+
+
+chatgpt_api_key=os.environ.get('chatgpt_api_key')
+chatgpt_api_key2=os.environ.get('chatgpt_api_key2')
+deepseek_api_key=os.environ.get('deepseek_api_key')
+
+
 from flask import Flask, redirect, url_for, request,render_template, send_file, send_from_directory
 #from werkzeug.middleware.proxy_fix import ProxyFix
 from flask import jsonify
