@@ -12,18 +12,8 @@ from flask import Flask, redirect, url_for, request,render_template, send_file, 
 #from werkzeug.middleware.proxy_fix import ProxyFix
 from flask import jsonify
 
-#app = Flask(__name__)
 
-#app.wsgi_app = ProxyFix(app.wsgi_app)
 app = Flask(__name__)
-
-# # Trust exactly one proxy: Apache on localhost
-# app.wsgi_app = ProxyFix(
-#     app.wsgi_app,
-#     x_for=1,
-#     x_proto=1,
-#     x_host=1
-# )
 
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -40,23 +30,23 @@ def client_ip():
     return {"ip": request.remote_addr}  
 
 
-@app.route("/debug-ip")
-def debug_ip():
-    return {
-        "remote_addr": request.remote_addr,
-        "x_forwarded_for": request.headers.get("X-Forwarded-For"),
-        "x_real_ip": request.headers.get("X-Real-IP"),
-        "access_route": request.access_route
-    }
+# @app.route("/debug-ip")
+# def debug_ip():
+#     return {
+#         "remote_addr": request.remote_addr,
+#         "x_forwarded_for": request.headers.get("X-Forwarded-For"),
+#         "x_real_ip": request.headers.get("X-Real-IP"),
+#         "access_route": request.access_route
+#     }
 
 
-@app.route("/debug-headers")
-def debug_headers():
-    return {
-        "all_headers": dict(request.headers),
-        "remote_addr": request.remote_addr,
-        "environ_x_forwarded_for": request.environ.get("HTTP_X_FORWARDED_FOR")
-    }
+# @app.route("/debug-headers")
+# def debug_headers():
+#     return {
+#         "all_headers": dict(request.headers),
+#         "remote_addr": request.remote_addr,
+#         "environ_x_forwarded_for": request.environ.get("HTTP_X_FORWARDED_FOR")
+#     }
 
 
 @app.route('/assets/<path:path>')
@@ -85,12 +75,12 @@ def exception_handler(error):
 def home_page():
   out_dict={}
   out_dict["message"]="success"
-  with open("index.html") as fopen: content0=fopen.read()
-  #return json.dumps(out_dict)
+  #with open("index.html") as fopen: content0=fopen.read()
+  return json.dumps(out_dict)
 
   #index_file_dom=DOM(read_file("index.html"))
   #home_repl_dict={".page":""}
-  return content0
+  #return content0
 
   #return read_file("index.html") #json.dumps(out_dict)
 
